@@ -1,0 +1,31 @@
+\section{Ein- und Ausgabe}
+	Um die \lc{C++} Ein- und Ausgaben nutzen zu können, muss man die Bibliothek iostream einbinden. Das geschieht mit:
+	\lstinputlisting{code/iostream.cpp}
+	Damit die Ein- und Ausgabebefehle auch wirklich genutzt werden können, müssen sie mithilfe von
+	\lstinputlisting{code/using_namespace_std.cpp}
+	noch bekanntgegeben werden.\newline	
+	\begin{minipage}[t]{11 cm}		
+		\subsection{Streamkonzept}
+			\begin{compactitem}
+				\item Ein \lc{Stream} repräsentiert einen sequentiellen Datenstrom.
+				\item \lc{C++} stellt 4 Standardstreams zur Verfügung:
+					\begin{compactitem}
+						\item \lc{cin}: Standard-Eingabesteam
+						\item \lc{cout}: Standard-Ausgabestream
+						\item \lc{cerr}: Standard-Fehlerausgabestream
+						\item \lc{clog}: mit \lc{cerr} gekoppelt
+					\end{compactitem}
+				\item Alle diese Streams können auch mit einer Datei verbunden werden.	
+				\item Alle Schlüsselwörter müssen immer ganz links auf der Zeile stehen!\newline
+			\end{compactitem} 
+	\end{minipage}
+	\hspace*{0.5cm}	
+	\begin{minipage}[t]{7 cm}
+		\subsection{Eingabebeispiele}
+			\lstinputlisting{code/eingabe_3.cpp}	
+	\end{minipage}
+	\hspace{0.5cm}
+	\subsection{Ausgabebeispiele}
+		\lstinputlisting{code/ausgabe_3.cpp}
+		\lstinputlisting{code/ausgabe_4.cpp}
+		

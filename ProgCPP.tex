@@ -1,0 +1,78 @@
+%Dokumentinformationen
+\newcommand{\titleinfo}{Informatik - Zusammenfassung}
+\newcommand{\authorinfo}{C.Renda}
+\newcommand{\versioninfo}{$Revision: $ \today}
+
+%Weitere Autoren %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%C.Renda
+
+% standard header
+\include{sections/header} % ./header.tex nicht editieren (Projekt LaTeX-Header benutzen)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Neue Befehle und Definitionen                
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is needed for one more subsection, ex. 1.1.1.1, is called by \paragraph{}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+% Settings which are used to set the distance above and under the sections
+%\titlespacing*{\paragraph}{0pt}{2.25ex plus 1ex minus .2ex}{1.0ex plus .2ex}
+\titlespacing{\section}{0em}{0.5em}{0.5em}
+\titlespacing{\subsection}{0em}{0.5em}{0.5em}
+\titlespacing{\subsubsection}{0em}{0.5em}{0.5em}
+
+% Linksbündig
+\setlength\parindent{0ex}
+
+% This is needed for a smaller itemlist, is called by \compactenum {}
+\usepackage{paralist}
+
+% This is needed for merging some columns in a table
+\usepackage{multicol} 
+\usepackage{multirow}
+
+% This is needed for code listing
+\usepackage[]{listings}
+\lstset{literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+	{~}{{\textasciitilde}}1
+}
+
+% This is needed for UML Diagrams
+\usepackage{tikz}
+\usepackage{pgf-umlcd}
+
+% Courier font
+\usepackage{courier}
+
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{black}{rgb}{0,0,0}
+\newcommand{\verweisc}[1]{$_{\textcolor{red}{\mbox{\small{C Kap. #1}}}}$}
+\newcommand{\verweiscpp}[1]{$_{\textcolor{blue}{\mbox{\small{C++ Kap. #1}}}}$}
+\newcommand{\verweisboth}[2]{$_{\textcolor{red}{\mbox{\small{C Kap. #1}}}}$$_{\textcolor{black}{\mbox{\small{, }}}}$$_{\textcolor{blue}{\mbox{\small{C++ Kap. #2}}}}$}
+\newcommand{\verweishoch}[1]{${\textcolor{red}{\mbox{\small{Kapitel #1}}}}$}
+\newcommand{\lc}[1]{\textit{\texttt{#1}}}
+
+%Document Anfang
+\begin{document}	
+
+
+	\raggedbottom
+	\lstset{style=cpp}
+\begin{multicols*}{3}
+	\input{sections/01_Aufbau}
+	%\input{sections/01_Ein_und_Ausgabe}
+	\input{sections/02_Variablen}
+\end{multicols*}		
+
+\end{document}
