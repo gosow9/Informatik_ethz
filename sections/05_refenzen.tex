@@ -1,0 +1,71 @@
+\subsection{Pointer und Referenzen als Rückgabewert und Parameterübergabe}
+  		Bei Variablenübergabe (call by value) werden Kopien übergeben, welche nicht verändert werden können.\\
+  		Bei Referenzübergabe (call by reference) kann die Subroutine die Werte bleibend verändern. \\
+  		\textbf{Objekte einer Klasse und Strukturvariablen sollen immer by reference übergeben werden!} \\
+  		
+
+\subsection{call by reference}
+  \begin{minipage}[t]{5cm}
+  \begin{lstlisting}
+void swap(int& a, int& b)
+{
+int tmp = a;
+a = b;
+b = tmp;
+}
+int main()
+{
+int x = 4;
+int y = 3;
+swap(x, y); // OK!
+return 0;
+}	
+\end{lstlisting}
+\end{minipage}
+\hspace*{0.5cm}
+\begin{minipage}[t]{5cm}
+
+\begin{lstlisting}
+void swap(int* a, int* b)
+{
+int tmp = *a;
+*a = *b;
+*b = tmp;
+}
+int main()
+{
+int x = 4;
+int y = 3;
+swap(&x, &y); // OK!
+return 0;
+}
+\end{lstlisting}
+\end{minipage}
+%\hspace*{0.5cm}
+\begin{minipage}[t]{4.9 cm}
+\subsection{call by value}
+\begin{lstlisting}
+void swap(int a, int b)
+{
+int tmp = a;
+a = b;
+b = tmp;
+}
+int main()
+{
+int x = 4;
+int y = 3;
+swap(x, y); // keine Ausw.
+return 0;
+}	
+\end{lstlisting}
+\end{minipage}
+
+bkljdfbkjsdfb  asfoih sdafojps dfsdfjksdh fdfks dsdf sdf
+sdf sdfjoisjdf sd f
+sdfj sodp f 
+
+df ihoüsdfjs
+df
+
+
