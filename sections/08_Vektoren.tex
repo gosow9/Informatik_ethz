@@ -1,0 +1,33 @@
+\section{Vektoren} 
+Vektoren dienen zum Speichern gleichartiger Daten.
+\subsection{Initialisierung}
+\begin{lstlisting}
+	std::vector<int> vec(3);
+	//{0, 0, 0}
+	std::vector<int> vec(4, 2);
+	//{2, 2, 2, 2}
+	std::vector<int> vec{4,3,2,1};
+	//{4, 3, 2, 1}
+	std::vector<int> vec;
+	//leerer Vektor
+\end{lstlisting}
+\subsection{Zugriff}
+Das erste Element eines Vekotrs hat index 0. Ein Zugriff auf Elemente ausserhalb der gültigen Grenze führt zu undefinierten Verhalten. C++ bietet eine optionale überprüfung.
+\begin{lstlisting}
+	std::vector<int> vec(3);
+	vec.at(3) = 1;	//Error compiler
+	vec[3] = 1; //undefined behaviour
+\end{lstlisting}
+\subsection{Befehle}
+\begin{lstlisting}
+	std::vector<int> vec{0,1};
+	vec.size(); //Länge des Vektors: 2
+	vec.push_back(3) //hängt wert an: {0,1,3}
+	vec.clear(); //löscht Inhalt : {0,0,0}
+	vec.resize(2); //ändert Grösse: {0,0}
+\end{lstlisting}
+
+
+
+
+

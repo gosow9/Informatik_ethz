@@ -1,0 +1,61 @@
+\section{Pointer und Referenzen} 
+Bei Variablenübergabe (call by value) werden Kopien übergeben, welche nicht verändert werden können.\\
+Bei Referenzübergabe (call by reference) kann die Subroutine die Werte bleibend verändern. \\
+\textbf{Objekte einer Klasse und Strukturvariablen sollen immer by reference übergeben werden!} \\
+\subsection{call by reference}
+\vspace{-13pt}
+\begin{multicols}{2}
+	statisch:
+	\begin{lstlisting}
+		void swap(int& a, int& b){
+			int tmp = a;
+			a = b;
+			b = tmp;
+		}
+		int main(){
+			int x = 4;
+			int y = 3;
+			swap(x, y);// OK!
+			return 0;
+		}	
+	\end{lstlisting}
+	dynamisch:
+	\begin{lstlisting}
+		void swap(int* a, int* b){
+			int tmp = *a;
+			*a = *b;
+			*b = tmp;
+		}
+		int main(){
+			int x = 4;
+			int y = 3;
+			swap(&x, &y);// OK!
+			return 0;
+		}
+	\end{lstlisting}
+\end{multicols}
+\subsection{call by value}
+	\begin{lstlisting}
+		void swap(int a, int b){
+			int tmp = a;
+			a = b;
+			b = tmp;
+		}
+		int main(){
+			int x = 4;
+			int y = 3;
+			swap(x, y); // keine Auswirkung
+			return 0;
+		}	
+	\end{lstlisting}
+\subsection{return by reference}
+\begin{lstlisting}
+	int& inc(int& i){
+		return ++i;
+	}	
+\end{lstlisting}
+Der Funktionsaufruf ist nun selbst ein L-Wert, was nun Ausdrücke wie \texttt{inc(inc(x))} oder \texttt{++inc(x)} erlaubt. \textbf{Achtung} Gültigkeitsbereiche: Return by reference auf lokale Variable ist undefined behavior.
+	\textbf{//Edit sobald Pointer in Vorlesung}
+
+
+
