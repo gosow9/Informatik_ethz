@@ -1,0 +1,36 @@
+\section{Funktionen}
+Funktionen sind Unterprogramme, die häufig verwendeten Code enthalten.\\
+Ein Beispiel:
+\begin{lstlisting}
+	int add (int a, int b); 	//Prototyp
+	
+	//PRE: a, b > 0
+	//POST: true, wenn eine das doppelte der anderen ist
+	bool timestwo (int a, int b){
+		bool c=false;
+		return a==add(b, b) || b==add(a,a);
+	}
+\end{lstlisting}
+Rückgabewert ist immer genau \textbf{ein} Variabeltyp (Workaround: Structs). Ohne Rückgabewert schreibt man \texttt{void}.
+\subsection{Aufbau}
+\texttt{rückgabewert} \texttt{funktionsname} \texttt{(argument)}\texttt{\{}
+
+\hspace{10pt}\texttt{funktionskörper}
+
+\hspace{10pt}\texttt{return ;}\\
+\texttt{\}}
+\subsection{Pre- und postconditions}
+Preconditions beschreiben den Input der Funktion, Postcondition den Output und die Wirkung der Funktion. Preconditions prüft man mit\\ \texttt{assert (a>0 \&\& b>0)}
+\subsection{Prototyp und Gültigkeitsberieche}
+Falls eine Funktion \texttt{g}, die Funktion \texttt{f} benötigt muss diese vorab definiert sein, da sich der Gültigkeitsbereich einer Funktion nur unterhalb seiner Defintion befindet. Die formalen Argumente verhalten sich wie Variabeln und haben nur einen Lokalen Gültigkeitsbereich im Funktionsblock.
+\subsection{Rekursion}
+Wenn eine Funktion sich selber wieder auruft, nennt man das Rekursion. Dabei muss es eine Abbruchbedingung geben, die auch erreicht wird. Dann wird von innen aufgelöst.
+\begin{lstlisting}
+	int fak (int n){
+		if(n==1) return 1;
+		return n* fak(n-1);
+	}
+\end{lstlisting}
+
+
+
