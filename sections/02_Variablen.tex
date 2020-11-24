@@ -1,39 +1,104 @@
 \section{Variablen}
 
 \begin{center}
-	\begin{tabular}{ |l|l|l|l| } 
+	\begin{tabular}{ |l|l|l| } 
 		\hline
-		\textbf{Group} & \textbf{Type names} & \textbf{Notes on size / precision} \\
-		\hline
-		\multirow{3}{4em}{Character types} 
-		& \texttt{char} & One byte  8 bits. \\ 
-		& \texttt{char16\_t} & At least 16 bits \\ 
-		& \texttt{char32\_t} & At least 32 bits. \\ 
-		& \texttt{wchar\_t} & Largest character set \\ 
+		 \texttt{char} & 1 byte  8 bits. \\ 
+		 \texttt{char16\_t} & At least 16 bits \\ 
+		 \texttt{char32\_t} & At least 32 bits. \\ 
 		\hline
 		
-		\multirow{3}{4em}{Integer types (signed)} 
-		& \texttt{signed char} 			& Min 8 bits. \\ 
-		& \texttt{signed short int} 	& Min 16 bits. \\ 
-		& \texttt{signed int} 			& Min 16 bits. \\ 
-		& \texttt{signed long int} 		& Min 32 bits. \\
-		& \texttt{signed long long int} & Min 64 bits. \\
+		 \texttt{signed char} 			& Min 8 bits. \\ 
+		 \texttt{signed short int} 	& Min 16 bits. \\ 
+		 \texttt{signed int} 			& Min 16 bits. \\ 
+		 \texttt{signed long int} 		& Min 32 bits. \\
+		 \texttt{signed long long int} & Min 64 bits. \\
 		\hline
 		
- 		\multirow{3}{4em}{Integer types (unsigned)} 
-		& \texttt{unsigned char} 			& Min 8 bits. \\ 
-		& \texttt{" short int} 		& Min 16 bits. \\ 
-		& \texttt{"int} 			& Min 16 bits. \\ 
-		& \texttt{" long int} 		& Min 32 bits. \\
-		& \texttt{" long long int} 	& Min 64 bits. \\
+ 		
+		 \texttt{unsigned char} 			& Min 8 bits. \\ 
+		 \texttt{" short int} 		& Min 16 bits. \\ 
+		 \texttt{"int} 			& Min 16 bits. \\ 
+		 \texttt{" long int} 		& Min 32 bits. \\
+		 \texttt{" long long int} 	& Min 64 bits. \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Variablennamen}
+Keine Leerzeichen, Satzzeichen oder \_ Symbole Keine Zahl oder am Anfang case sensitivity – Gross - Kleinschreibung beachten
+
+\subsection{Einfache Variablen deklarieren}
+\begin{lstlisting}
+int a,a2;   int b (1);
+int b = 10;  int b {1};
+float c = a*b - 0.5;
+\end{lstlisting}
+\subsection{Casts}
+Änderung einer Variable in einen anderen Type
+\begin{lstlisting}	
+double a = 1.5; int b;
+b = int (a);
+b = (int) a; // b=1
+7/2 = 3 , 7/(double)2 = 7/2.0 = 3.5
+double(7/2) = 3.0 , int(19/10.0) = 1
+\end{lstlisting}
+
+
+\subsection{Enum}
+Enum ist ein Aufzählungstyp. Die Konstanten aus der Enum
+kann man im Programm verwenden.
+\begin{lstlisting}	
+enum farbe {ROT, BLAU, GELB};
+farbe f = ROT;
+if(f != BLAU) { }; 
+\end{lstlisting}
+
+\subsection{Hexadezimaler Code \& Adressen}
+0,1,...,9,A,B,C,D,E,F (hex) anstelle von 0,1,...,14,15,16 (dec)
+Adressen werden hexadezimal angegeben. $a,a+1,a+2,a+3,...$
+
+\begin{center}
+	\begin{tabular}{ ll } 
+		\hline
+int,float(4byte) & double (8byte)\\
+\hline
+0x22ff70 & 0x22ff70\\
+0x22ff74 & 0x22ff78\\
+0x22ff78 & 0x22ff80\\
 		\hline
 	\end{tabular}
 \end{center}
 
-Mögliche Initialsisations von vaiablen
-\begin{lstlisting}	
-int x;
-int x = 1;
-int x (1);
-int x {1};
-\end{lstlisting}
+\subsection{Fliesskommazahlen}
+\begin{center}
+	\begin{tabular}{ ll } 
+		float&1b$\rightarrow$sign, 8b$\rightarrow$exp, 23b$\rightarrow$mantisse\\
+		&Wert = $(-1)^{\texttt{S}} \cdot 2^{(\texttt{E-127})} \cdot (1.\texttt{F})$\\
+		&Bsp: $0.125 = 2^{3} \Rightarrow \texttt{S} \rightarrow 0, \texttt{E} \rightarrow 124, \texttt{F} \rightarrow 0$\\
+		\hline
+		 & 0 | 01111100 | 00000000...0 = 0.125\\
+		 & 0 | 01111111 | 00000000...0 = 1\\
+		 & 1 | 01111111 | 11000000...0 = -1.75\\
+		 & 0 | 00000000 | 00000000...0 = 0\\
+		 & 0 | 11111111 | 00000000...0 = +infty\\
+		 & 0 | 00000000 | 00000000...0 = NaN\\
+		\hline
+		double& 1b$\rightarrow$sign, 11b$\rightarrow$exp, 52b$\rightarrow$mantisse\\
+		& Wert = $(-1)^{\texttt{S}} \cdot 2^{(\texttt{E-1023})} \cdot (1.\texttt{F})$\\
+	\end{tabular}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
