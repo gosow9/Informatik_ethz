@@ -1,0 +1,82 @@
+\section{Kontrollstrukturen}
+\textbf{if()}
+\begin{lstlisting}
+if(a==10){
+b=15;
+}
+else if(a==11) b=14;
+else b=10;
+// oder kurz
+a==10?b=15:a==11?b=14:b=10;
+\end{lstlisting}
+
+\textbf{for()}
+\begin{lstlisting}
+for(int i=0; i<10; i++)
+{
+a=a+i;
+} // abbruch mit break;
+\end{lstlisting}
+
+\textbf{while()}
+\begin{multicols}{2}
+	\begin{lstlisting}
+while(b<20){
+b++;
+}	
+	\end{lstlisting}
+	oder
+	\begin{lstlisting}
+do {
+b--; //min 1 x
+}
+while(b!=15);
+	\end{lstlisting}
+\end{multicols}
+abbrechen mit break (immer nur die innere Schleife)
+Überspringen des Rests des Rumpfes zur nächsten
+Auswärtung mit continue;
+
+
+\textbf{switch case()}
+\begin{lstlisting}
+switch(a) {
+case 15:cout<<"a=15";break;
+case 14:cout<<"a=14";break; //a==14
+default:cout<<"a!=15,a!=14"; //else
+}
+\end{lstlisting}
+
+\textbf{Äquivalente Strukturen}
+Man kann verschiedene Strukturen verwenden um ein und dasselbe auszudrücken: 
+\begin{lstlisting}
+int i=0;
+do {
+i=i+1;
+if (i==10) break;
+}while(true); //aka immer
+\end{lstlisting}
+...ist äquivalent zu... 
+\begin{lstlisting}
+for(int i=0;i!=10;i++){} 
+\end{lstlisting}
+
+
+\textbf{Endlosschleifen}
+Man kann verschiedene Strukturen verwenden um ein und dasselbe auszudrücken: 
+\begin{lstlisting}
+int i=10;
+do {
+i=i+1;
+if (i==10) break;
+}while(true);
+for(int i=3;i!=20;i=(i+3)%300)
+int i=99;
+while(i>10){
+i--;
+if(i==15) i*=6;} 
+\end{lstlisting}
+
+
+
+
