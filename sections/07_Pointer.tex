@@ -55,7 +55,21 @@ Bei Referenzübergabe (call by reference) kann die Subroutine die Werte bleibend
 	}	
 \end{lstlisting}
 Der Funktionsaufruf ist nun selbst ein L-Wert, was nun Ausdrücke wie \texttt{inc(inc(x))} oder \texttt{++inc(x)} erlaubt. \textbf{Achtung} Gültigkeitsbereiche: Return by reference auf lokale Variable ist undefined behavior.
-	\textbf{//Edit sobald Pointer in Vorlesung}
+\subsection{Pointer}
+Ein Ausdruck vom Typ \texttt{T*} heisst Zeiger (Auf T). Der Wert eines Zeigers ist die Adresse, auf die er zeigt. Man kommt auf die Adresse eines Objektes entweder direkt beim Erzeugen mittels \texttt{new} oder mit dem Adress-Operator \texttt{\&}.Um undefiniertes Verhalten bei der Initialisierung zu vermeinden, erstellt man einen Null-Zeiger.
+\begin{lstlisting}
+	int* r; //undefined behaviour
+	int* q=nullptr; //(zeigt explizit ins nichts)
+	
+	int i = 5;
+	int* p = &i; //Zeiger auf i
+	std::cout<<*p; // Output: 5
+\end{lstlisting}
+\includegraphics[width=0.24 \textwidth]{sections/pointer}
+Um nun der Wert bei der Adresse des Pointers zu erhalten braucht man den Deferenz-Operator \texttt{*}.
+\subsubsection{Pointerarithmetik}
+Mit Pointer-
+
 
 
 
