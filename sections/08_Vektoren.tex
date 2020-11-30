@@ -18,15 +18,16 @@ Das erste Element eines Vekotrs hat index 0. Ein Zugriff auf Elemente ausserhalb
 	vec.at(3) = 1;	//Error compiler
 	vec[3] = 1; //undefined behaviour
 \end{lstlisting}
-\subsection{Anwendungsmöglichkeiten}
+\subsection{Funktionen}
 Einige Funktionen aus der \texttt{vector} Bibliothek:
 \begin{lstlisting}
 	std::vector<int> vec{0,1};
 	vec.size(); //Länge des Vektors: 2
 	vec.push_back(3) //hängt wert an: {0,1,3}
-	vec.clear(); //löscht Inhalt : {0,0,0}
-	vec.resize(2); //ändert Grösse: {0,0}
-	vec.insert(1,3); //fügt Wert ein: {0,3,0}
+	vec.pop_back(3) //hängt wert an: {0,1}
+	vec.clear(); //löscht Inhalt : {0,0}
+	vec.resize(3); //ändert Grösse: {0,0,0}
+	vec.insert(1,3); //fügt Wert ein: {0,3,0,0}
 \end{lstlisting}
 \subsection{Multidimensionale Vektoren}
 Eine Matrix (2. dimensionaler Vektor) ist ein Vektor, dessen Einträge Vektoren sind.
@@ -36,6 +37,12 @@ Eine Matrix (2. dimensionaler Vektor) ist ein Vektor, dessen Einträge Vektoren 
 	{10,11,12},
 	{20,21,22}};
 	std::cout<<mat[1][2]; //Output: 12
+\end{lstlisting}
+Praktisch sind in diesem Falle Namespaces:
+\vspace{-11pt}
+\begin{lstlisting}
+	using vector = std::vector<int>;
+	using matrix = 	std::vector<std::vector<int>>;
 \end{lstlisting}
 \textbf{Wichtig}: Arrays werden fast immer per Referenz übergeben.
 
