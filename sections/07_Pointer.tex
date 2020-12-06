@@ -68,7 +68,21 @@ Ein Ausdruck vom Typ \texttt{T*} heisst Zeiger (Auf T). Der Wert eines Zeigers i
 \includegraphics[width=0.24 \textwidth]{sections/pointer}
 Um nun der Wert bei der Adresse des Pointers zu erhalten braucht man den Deferenz-Operator \texttt{*}.
 \subsubsection{Pointerarithmetik}
-Mit Pointer-
+Mit Pointer kann gerechnet werden.
+\begin{lstlisting}
+	int* p0 = new int[7]{1,2,3,4,5,6,7};
+	int* p3 = p0 + 3; //p3 zeigt auf das 4.te Element
+	++p0 // p0 zeigt neu auf das 2.te Element.
+\end{lstlisting}
+Speicher der mit \texttt{new Typ} alloziert wurde, wid nicht automatisch freigegeben. Mit Pointer kann mann auch wahlfreien Zugriff auf Arrays machen. \texttt{*(p0 + i)} ist das selbe wie \texttt{p[i]}. Die übergabe eines Arrays erfolgt oft mittels zwei Zeigern \texttt{begin} (erstes Element) und \texttt{end} (hinter letztes Element)
+Wenn Werte von Zeigern, oder Zeiger selber nicht verändert werden soltlen, kann diese Garantie mit \texttt{const} gegeben werden. Man liest die Deklaration von rechts nach links.
+\begin{lstlisting}
+	int const p1; //konst. Wert
+	int const* p2 //Zeiger auf konst. Wert
+	int* const p3; // konst. Zeiger auf Wert
+	int const* const p4; //konst. Zeiger auf konst. Wert
+	
+\end{lstlisting}
 
 
 
