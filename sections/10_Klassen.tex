@@ -1,6 +1,43 @@
 \section{Klassen}
-Eine Klasse ist eine Datenstruktur wie auch Structs. Eine Klasse hat jedoch unterschiedliche Zugriffsrechte:
-
+Eine Klasse ist eine Datenstruktur wie auch Structs. Eine Klasse hat jedoch unterschiedliche Zugriffsrechte auf die internen Variabeln, Objekte genannt.
+\begin{itemize}
+	\item[\texttt{private}] - (default) Elemente, meist interne Variablen, können nur innerhalb der Klasse angesprochen werden. Memeberfunktionen(Methoden) können darauf zugreifen. 
+	\item[\texttt{public}] - Elemente, die meisten Methoden, können von innerhalb und ausserhalb der Klasse angesprochen werden.
+	\item[\texttt{protected}] - Elemente können von innerhalb der Klasse und von abgeleiteten Klassen angesprochen werden.
+\end{itemize}
+\begin{lstlisting}
+	class klassenname{
+		private:
+			int n;					//Membervariabeln
+			int d;
+		public:
+			Klassenname(int, int);	//Konstruktor
+			int f1(int);			//Memeberfunktionen (prototyp)
+			void f2();
+	};
+\end{lstlisting}
+\subsection{Konstruktoren}
+Konstruktoren sind spezielle Memeberfunktionen, die den Namen der Klasse tragen. Sie können auch überladen werden und werden bei der Variabelndeklaration aufgerufen.
+\begin{lstlisting}
+	class rational{
+		...
+		public:
+		rational (int num, int den);
+		rational ();
+	};
+	rational::rational (int num, int den)
+	: n(num), d(den){ //Variabeln initialisierung
+		assert(den!=0); // Funktionsrumpf
+	}
+	rational::rational () : n(0), d(1){};
+\end{lstlisting}
+Damit eine Variable bereits definiert werden kann ohne ''initialisiert'' zu werden, sollte ein Default-Konstruktor erstellt werden. Dieser enthält keine Argumente setzt die Membervariablen auf ein spezifischen default-Wert. Nun kann ein Objekt vom Typ rational unterschiedlich initialisiert werden. 
+\begin{lstlisting}
+	rational r
+	rational r1(1,2);
+	rational r2 = rational(1,2);
+\end{lstlisting}
+Der \texttt{this->}-Pointer ist ein Pointer auf das Aktuelle Objekt.
 
 
 
