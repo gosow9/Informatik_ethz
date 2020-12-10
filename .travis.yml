@@ -1,73 +1,11 @@
-name: texlive
-on: push
+sudo: required
+language: generic
+services: docker
 
-env:
-  FILE: pythontex-example
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
-      - name: Cache installation
-        id: cache-texlive
-        uses: actions/cache@v2
-        with:
-          path: |
-            /tmp/texlive
-            $HOME/.texlive
-          key: ${{ runner.os }}-texlive
-      # Only required for pythontex
-      - name: Setup Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8.6
-          architecture: x64
-      - name: Install and compile
-        run: |
-          pip install numpy pygments
-          cd 4-texlive/
-          source ./texlive/texlive_install.sh
-          cd ../src
-          texliveonfly $FILE.tex
-          pythontex $FILE
-          pdflatex $FILE.tex
-      - name: Set filename
-        id: output_file
-        run: |
-          echo ::set-output name=OUTPUT_FILE::src/$FILE.pdf
-      - name: Upload pdf
-        uses: actions/upload-artifact@v2
-        with:
-          name: github-actions-pdf
-          path: ${{ steps.output_file.outputs.OUTPUT_FILE }}
-      # The following steps are just for creating a GitHub release when a git tag is pushed
-      - name: Create Release
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - name: Prepare output path and output name
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        id: prepare_metadata
-        # upload-release-asset does not support wildcards or environment variables at the moment
-        run: |
-          echo ::set-output name=ARTIFACT_PATH::src/$FILE.pdf
-          echo ::set-output name=ARTIFACT_NAME::$FILE.pdf
-      - name: Upload Release Asset
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.prepare_metadata.outputs.ARTIFACT_PATH }}
-          asset_name: ${{ steps.prepare_metadata.outputs.ARTIFACT_NAME }}
-          asset_content_type: application/pdf
+script:
+  # We use the docker image from https://hub.docker.com/r/dxjoke/tectonic-docker/
+  - docker pull dxjoke/tectonic-docker
+  # Compiling only main.tex:
+  - docker run --mount src=$TRAVIS_BUILD_DIR/,target=/usr/tex,type=bind dxjoke/tectonic-docker /bin/sh -c "tectonic ProgCPP.tex"
+  # Compiling multiple files as well as using biber:
+#  - docker run --mount src=$TRAVIS_BUILD_DIR/src,target=/usr/src/tex,type=bind dxjoke/tectonic-docker /bin/sh -c "tectonic --keep-intermediates --reruns 0 biber-mwe.tex; biber biber-mwe; tectonic biber-mwe.tex; tectonic main.tex"
