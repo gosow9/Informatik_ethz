@@ -20,7 +20,24 @@
 * Subtyping
 * Polymorphismus und Vererbung
 
-
+### Fortschritt der Zusammenfassung:
+- [x] Integer Arithmetik
+- [x] Type Casts
+- [ ] floating point
+- [x] Kontrollstrukturen
+- [x] Arrays
+- [x] Structs
+- [x] Functions
+- [x] Recursion
+- [ ] Pointer & Referenzen
+- [x] Vectors & Strings
+- [x] Klassen
+- [ ] Dynamische Datentypen & Pointers
+- [ ] Iterators
+- [ ] Container
+- [ ] Memory Management
+- [ ] Subtyping
+- [ ] Polymorphismus und Vererbung
 
 
 
