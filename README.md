@@ -21,23 +21,23 @@
 * Polymorphismus und Vererbung
 
 ### Fortschritt der Zusammenfassung:
-- [x] Integer Arithmetik
-- [x] Type Casts
-- [ ] floating point
-- [x] Kontrollstrukturen
-- [x] Arrays
-- [x] Structs
-- [x] Functions
-- [x] Recursion
-- [ ] Pointer & Referenzen
-- [x] Vectors & Strings
-- [x] Klassen
-- [ ] Dynamische Datentypen & Pointers
-- [ ] Iterators
-- [ ] Container
-- [ ] Memory Management
-- [ ] Subtyping
-- [ ] Polymorphismus und Vererbung
+- [x] Integer Arithmetik (Cedric)
+- [x] Type Casts (Cedric)
+- [ ] floating point (Cedric)
+- [x] Kontrollstrukturen (Cedric)
+- [x] Arrays (Cedric)
+- [x] Structs (Cedric)
+- [x] Functions (Robin)
+- [x] Recursion (Robin)
+- [x] Pointer & Referenzen (Robin)
+- [x] Vectors & Strings (Robin)
+- [x] Klassen (Robin)
+- [ ] Dynamische Datentypen & Pointers ()
+- [ ] Iterators ()
+- [ ] Container ()
+- [ ] Memory Management ()
+- [ ] Subtyping ()
+- [ ] Polymorphismus und Vererbung ()
 
 
 
