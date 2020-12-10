@@ -1,5 +1,75 @@
 \section{Structures}
 
+Structs werden vor der main() Funktion definiert.
+\begin{lstlisting}[mathescape]
+struct point {
+int x, y;
+double gamma;
+}p,q; 	// p,q schon definiert
+
+point k; 	// Neuer "point" definieren
+k.x = 2;	// Variable in struct definieren
+k = {1,2,0.75} // schnell initialisieren
+q = {1} $\leftrightarrow$ q ={1,0,0} // rest wird mit 0 aufgefüllt
+p = q; // ist gleich wie
+p.x = q.x; 
+p.y = q.y;
+p.gamma = q.gamma;
+\end{lstlisting}
+
+\textbf{Falsch Rekursion:} 
+\begin{lstlisting}[mathescape]
+struct point {int x; point y;}; // Keine Rekursion
+\end{lstlisting}
+\textbf{Richtig Selbstreferenzierung:} 
+\begin{lstlisting}[mathescape]
+struct node
+{
+int data;
+struct node *next; // <-self reference
+};
+\end{lstlisting}
+\textbf{Strichpunkt am Ende nicht vergessen} 
+\texttt{struct point \{int i; double y;\};}
+
+\subsection{Funktionen in Structs}
+Die Konstruktor-Funktion wird bei der Generierung eines neuen Structs aufgerufen.
+\begin{lstlisting}[mathescape]
+struct Bar
+{
+	Bar() {//Konstruktor}
+};
+\end{lstlisting}
+Funktionen können auch ausgelagert werden:
+\begin{lstlisting}[mathescape]
+struct Bar
+{
+void bier();
+}bqm;
+void Bar::bier() {};
+\end{lstlisting}
+Aufrufen der Funktion: \texttt{bqm.bier();}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
