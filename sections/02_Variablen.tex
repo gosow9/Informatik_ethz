@@ -1,29 +1,29 @@
 \section{Variablen}
-
+Wertebereich des Integers ist mit $n$-bits für \texttt{signed} $-2^{n-1}$ to $2^{n-1}-1$ und für \texttt{unsigned} $0$ to $2^{n}-1$.
 \begin{center}
-	\begin{tabular}{ |l|l|l| } 
+	\begin{tabular}{ | m{2.4cm} | m{0.6cm}| m{2.6cm} | } 
 		\hline
-		 \texttt{char} & 1 byte  8 bits. \\ 
-		 \texttt{char16\_t} & At least 16 bits \\ 
-		 \texttt{char32\_t} & At least 32 bits. \\ 
+		Type & Bytes & Range\\
 		\hline
-		
-		 \texttt{signed char} 			& Min 8 bits. \\ 
-		 \texttt{signed short int} 	& Min 16 bits. \\ 
-		 \texttt{signed int} 			& Min 16 bits. \\ 
-		 \texttt{signed long int} 		& Min 32 bits. \\
-		 \texttt{signed long long int} & Min 64 bits. \\
+		\texttt{char} & 1 & $-128$ to $127$ \\ 
+		\texttt{unsigned char} & 1 & $0$ to $255$ \\ 
+		\texttt{WCHAR\_T} & 4 & 1 Wide Char \\ 
 		\hline
-		
- 		
-		 \texttt{unsigned char} 			& Min 8 bits. \\ 
-		 \texttt{" short int} 		& Min 16 bits. \\ 
-		 \texttt{"int} 			& Min 16 bits. \\ 
-		 \texttt{" long int} 		& Min 32 bits. \\
-		 \texttt{" long long int} 	& Min 64 bits. \\
+		\texttt{unsigned int} & 4 & $0$ to $ 4,294,967,295$ \\ 
+		\texttt{int} & 4 & $-2,147,483,648$ to $2,147,483,647$ \\ 
+		\texttt{unsigned short int} & 2 & $0$ to $65,535$ \\
+		\texttt{short int} & 2 & $-32,768$ to $32,767$ \\  
+		\texttt{unsigned long int} & 8 & $0$ to $2^{64}-1$ \\ 
+		\texttt{long int} & 8 & $-2^{63}$ to $2^{63}-1$ \\
+		\hline
+		\texttt{float} & 4 & - \\ 
+		\texttt{double} & 8 & - \\
+		\texttt{long double} &16 & - \\
 		\hline
 	\end{tabular}
 \end{center}
+
+
 \subsection{Variablennamen}
 Keine Leerzeichen, Satzzeichen oder \_ Symbole Keine Zahl oder am Anfang case sensitivity – Gross - Kleinschreibung beachten
 
@@ -33,7 +33,7 @@ int a,a2;   int b (1);
 int b = 10;  int b {1};
 float c = a*b - 0.5;
 \end{lstlisting}
-\subsection{Casts}
+\subsection{Type Casts}
 Änderung einer Variable in einen anderen Type
 \begin{lstlisting}	
 double a = 1.5; int b;
@@ -41,6 +41,34 @@ b = int (a);
 b = (int) a; // b=1
 7/2 = 3 , 7/(double)2 = 7/2.0 = 3.5
 double(7/2) = 3.0 , int(19/10.0) = 1
+\end{lstlisting}
+\textbf{const\_cast}
+Ausschliesslich bei der Entfernung des const-Qualifkators. Syntax: \texttt{const\_char<Zieltyp>expression}
+\begin{lstlisting}	
+const char* findSubString(const char* str, const char* subStr)
+{
+return strstr(const_cast<char*>str, const_cast<char*>subStr);
+}
+\end{lstlisting}
+
+\textbf{static\_cast}
+Umwandeln eines Klassenobjekt in ein Objekt seiner Basisklasse. Syntax ist analog zu \texttt{const\_cast}.
+\begin{lstlisting}	
+static_cast<SuperHero>Batman;
+\end{lstlisting}
+
+
+\textbf{dynamic\_cast}
+Umwandlung von Polymorphen Objekten im Zusammenhang mit dem Typsystem von C++.
+\begin{lstlisting}	
+dynamic_cast<SuperHero*>p;
+\end{lstlisting}
+
+
+\textbf{reinterpret\_cast}
+Neue Interpretation der zugrunde liegenden Bitkette.
+\begin{lstlisting}	
+reinterpret_cast<int*>str // char Pointer str wird in int-Pointer gewandelt.
 \end{lstlisting}
 
 
