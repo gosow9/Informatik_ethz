@@ -1,8 +1,37 @@
 \section{Arrays}
+\begin{lstlisting}
+int a[4]; // int array mit 4 Zellen
+a[0] = 1; // Definition des 1. Elements
+int a[4] = {1,2,3,4}; 
+int b[3][2] = {{1,2},{3,4},{5,6}};
+int c[x][3][x-1] = {{{ 
+\end{lstlisting}
 
+\begin{itemize}
+	\item Bei int a[N]; muss N als const int N = 10; definiert werden. Eine const int kann wäred dem Programmablauf nicht geändert werden.  
+	\item Ein Array beginnt immer mit a[0] und  endet mit a[N-1]
+	\item Übergibt man ein Array einer Funktion, ist das wie "Call by reference". Das Original-Array wird verändert.
+	
+\end{itemize}
 
+\subsection{Arrays und Pointer}
+\textbf{Arraynamen sind Pointer!}
 
+Bei der Definition eines Arrays wird Speicherplatz für eine bestimmte Anzahl Objekte reserviert. Die Arrayvariable zeigt auf das erste Objekt dieses Speicherplatzes. Darum sind folgende Ausdrücke identisch:
 
+\begin{lstlisting}[mathescape]
+int c[10]; 	// Array definieren
+int* pc; 	// Pointer definieren 
+pc = c;		// Pointer zeigt auf Array
+pc[3] = 10;	$\leftrightarrow$ c[3]=10; $\leftrightarrow$ *(pc+3)=10;
+\end{lstlisting}
 
+Folgendes generiert auch ein Array mit Platz für 3
+Integer:
 
+\begin{lstlisting}[mathescape]
 
+int* a = new int[3];
+a[0] =3;		// ohne Stern *
+delete [] a; 	// Speicher wird wieder freigegeben
+\end{lstlisting}
