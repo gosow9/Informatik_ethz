@@ -6,27 +6,26 @@ Eine Klasse ist eine Datenstruktur wie auch Structs. Eine Klasse hat jedoch unte
 	\item[\texttt{protected}] - Elemente können von innerhalb der Klasse und von abgeleiteten Klassen angesprochen werden.
 \end{itemize}
 \begin{lstlisting}
-	class klassenname{
+	class stack{
 		private:
-			int n;					//Membervariabeln
-			int d;
+			int height;			//Membervariabeln
+			node* topn;					
 		public:
-			Klassenname(int, int);	//Konstruktor
-			int f1(int);			//Memeberfunktionen (prototyp)
-			void f2();
-	};
+			stack(node* t);		//Konstruktor
+			void push(int data):			//Memeberfunktionen (prototyp)
+			void pop();
+			void top() const;
+	}; 		//Strichpunkt nicht vergessen
 \end{lstlisting}
+\todo{Beispiel, dass alle Themen der Klasse abdeckt}
 \subsection{Konstruktoren}
 Konstruktoren sind spezielle Memeberfunktionen, die den Namen der Klasse tragen. Sie können auch überladen werden und werden bei der Variabelndeklaration aufgerufen.
 \begin{lstlisting}
-	class rational{
+	class stack{
 		...
-		public:
-		rational (int num, int den);
-		rational ();
 	};
-	rational::rational (int num, int den)
-	: n(num), d(den){ //Variabeln initialisierung
+	stack::stack (node* t)
+	: topn(t), height(1){ //Variabeln initialisierung
 		assert(den!=0); // Funktionsrumpf
 	}
 	rational::rational () : n(0), d(1){};
@@ -38,6 +37,35 @@ Damit eine Variable bereits definiert werden kann ohne ''initialisiert'' zu werd
 	rational r2 = rational(1,2);
 \end{lstlisting}
 Der \texttt{this->}-Pointer ist ein Pointer auf das Aktuelle Objekt.
+\subsection{Destruktoren}
+Der Destruktor ist eine eindeutige Memberfunktion der Klasse \texttt{klassenname} mit dem Namen \texttt{~klassenname()}. Diese Funktion wird automatisch aufgerufen, wenn die Speicherdauer eines Klassenobjekts endet (z. Bsp beim Aufruf von \texttt{delete} oder wenn der Gültigkeitsbereich des Objekts endet.)
+\todo{Beispiel}
+\subsection{Copy-Konstruktor}
+Der Copy-Konstruktor ist eine eindeutige Memberfunktion der Klasse \texttt{klassenname} mit dem Namen \texttt{klassenname(const klassenname\& x)}. Er wird automatisch aufgerufen, wenn Werte vom Typ \texttt{klassenname} mit Werten vom Typ \texttt{klassenname} initialisiert werden.
+\begin{lstlisting}
+	klassenname k = t //(t ist vom Typ klassenname)
+	klassenname k(t);
+\end{lstlisting}
+Exisitiert kein Copykonstruktor, wird automatisch memberweise initialisiert (dies kann zu Fehler führen).
+\todo{Beispiel}
+\subsection{Zuweisungsoperator}
+Achtung! Zuweisung $\neq$ Initialisierung. Für volle Funktionalität wollen wir zusätzlich noch eine Überladung vom \texttt{operator=} als Memberfunktion. Ist ähnlich wie der Copy-Konstruktor, aber ohne Initialisierung und zusätzlicher Freigabe des ''alten'' Wertes.
+\begin{lstlisting}
+	klassenname k, t; //(t ist vom Typ klassenname)
+	...
+	k=t;
+\end{lstlisting}
+Existiert kein Zuweisungsoperator, wird automatisch memberweise zugewiesen (dies kann zu Fehler führen).
+\begin{lstlisting}
+	stack& stack::operator= (const stack& s){
+		if(topn != s.topn){
+			stack copy = s; // Copy-Konstruktor
+			std::swap(topn, copy.topn); // copy hat jetzt Müll und this die kopierten Werte
+		} //copy wird aufgeräumt.
+	return *this; //Rückgabe als L-Wert
+	}
+\end{lstlisting}
+
 
 
 
