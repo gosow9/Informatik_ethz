@@ -14,8 +14,7 @@
 * Vectors & Strings
 * Klassen
 * Dynamische Datentypen & Pointers
-* Iterators
-* Container
+* Container Iterators
 * Memory Management
 * Subtyping
 * binarytrees
@@ -35,8 +34,7 @@
 - [x] Vectors & Strings (Robin)
 - [x] Klassen (Robin)
 - [ ] Dynamische Datentypen & Pointers (Cedric)
-- [ ] Iterators (Robin)
-- [ ] Container (Cedric)
+- [ ] Container Iterators (Robin)
 - [ ] Memory Management (Cedric)
 - [ ] Subtyping (Robin)
 - [ ] binarytrees (Cedric)
