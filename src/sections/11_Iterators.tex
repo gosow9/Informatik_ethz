@@ -1,0 +1,34 @@
+\section{Container und Iteratoren}
+Container sind Datenstrukturen mit einer Ansammlungen von Elementen, auf welchen Operationen ausgeführt werden können (z.Bsp Vektor).
+Die Standartbiblipthek von C++ enthält diverse Container mit unterschiedlichen Eigenschaften. \todo{Beispiele Container Eigene Section???}
+Um Unterschiedliche funktionen mit Container zu realisieren (z.bsp. um diese auszugeben) sind Iterator hilfreich. Jeder C++-Container implementiert seinen eigen Iterator. Gegeben sei ein Container \texttt{c}.
+\begin{tabular}{p{0.08 \textwidth}|p{0.14\textwidth}}
+	\texttt{it=c.begin()} & Itarator aufs erste Element\\
+	\texttt{it=c.end()} & Iterator hinters letzte Element\\
+	\texttt{*it} & Zugriff aufs aktuelle Element\\
+	\texttt{++it} & Iterator um ein Element verschieben\\
+	\texttt{it2!=it} & (oder \texttt{==}) vergleichen von Iteratoren
+\end{tabular}
+Iteratoren sind eine Art Containerspezifische Zeiger. Vorteil: Nutzer müssen genaue Implementierung nicht kennen.
+\begin{lstlisting}
+	void print(std::vector<int> vec){
+	for(std::vector<int>::iterator it= vec.begin();
+		it<vec.end();
+		++it){
+		std::cout<<*it<<" ";
+		}
+	}
+\end{lstlisting}
+Um einen solchen Iterator zu schreiben, muss ein Klasse mit den obigen Funktionen geschreiben werden. \texttt{iterator} ist eine innere Klasse von \texttt{Container}.
+\begin{lstlisting}
+	class Container {
+		...
+		public:
+		class iterator {
+			...
+		};
+		...
+	};
+\end{lstlisting}
+Jeder Container sollte auch ein \texttt{const\_iterator} bereitstellen. Dieser wird gebraucht, wenn nur lesezugriff gestattet ist oder das Objekt selbst \texttt{const.} ist.
+
