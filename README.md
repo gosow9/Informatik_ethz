@@ -35,12 +35,12 @@
 - [x] Vectors & Strings (Robin)
 - [x] Klassen (Robin)
 - [ ] Dynamische Datentypen & Pointers (Cedric)
-- [ ] Container Iterators (Robin)
+- [x] Container Iterators (Robin)
 - [ ] Container (bsp) (Cedric)
 - [ ] Memory Management (Cedric)
-- [ ] Subtyping (Robin)
+- [x] Subtyping (Robin)
 - [ ] binarytrees (Cedric)
-- [ ] Polymorphismus und Vererbung (Robin)
+- [x] Polymorphismus und Vererbung (Robin)
 
 
 
