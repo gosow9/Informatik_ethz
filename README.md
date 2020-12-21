@@ -34,13 +34,15 @@
 - [x] Pointer & Referenzen (Robin)
 - [x] Vectors & Strings (Robin)
 - [x] Klassen (Robin)
-- [ ] Dynamische Datentypen & Pointers (Cedric)
+- [x] Dynamische Datentypen & Pointers (Cedric)
 - [x] Container Iterators (Robin)
-- [ ] Container (bsp) (Cedric)
+- [?] Container (bsp) (Cedric)
 - [ ] Memory Management (Cedric)
 - [x] Subtyping (Robin)
 - [ ] binarytrees (Cedric)
 - [x] Polymorphismus und Vererbung (Robin)
+- [ ] Libraries
+- [ ] Examples
 
 
 
