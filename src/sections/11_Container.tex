@@ -1,0 +1,43 @@
+\section{Container}
+Folgende Standard librarys gehören zu den sequenziellen container welche die daten sequentiell zugreifen.
+
+\begin{multicols}{2}
+	\textbf{Sequenzielle:}
+	\begin{itemize}
+		\item array
+		\item vector
+		\item deque
+		\item forward\_list
+		\item list
+	\end{itemize}
+	
+	\textbf{Adaptors:}
+	\begin{itemize}
+		\item stack
+		\item queue
+		\item priority\_queue
+	\end{itemize}
+	
+\end{multicols}
+Container adaptoren stellen ein anderes interface für sequentielle container zu verfügung
+
+
+Die Assoziativen container sind sortiert implementiert und können mit der Komplexität $O(log(n))$ durchsucht werden.
+\begin{multicols}{2}
+	\textbf{Assoziativ:}
+\begin{itemize}
+	\item set
+	\item map
+	\item multiset
+	\item multimap
+\end{itemize}
+
+\textbf{Assoziativ unsortiert:}
+\begin{itemize}
+	\item unordered\_set
+	\item unordered\_map
+	\item unordered\_multiset
+	\item unordered\_multimap
+\end{itemize}
+\end{multicols}
+Die unsortierten assoziativen container sind unsortierte (hashed) Daten Strukture welche schnell $O(1)$ (ideal) oder worst-case $O(n)$ durchsucht werden können.

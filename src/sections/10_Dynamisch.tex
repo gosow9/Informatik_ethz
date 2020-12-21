@@ -1,0 +1,57 @@
+\section{Dynamische Datenstrukturen}
+Man kann Speicher schon im Code definieren oder wenn benötigt wärend der Laufzeit eines Programmes Dynamisch allozieren.
+
+\textbf{pro Memoria : Variablen}
+
+\begin{itemize}
+	\item erleichtern u.a. den Zugriff auf Speicherstellen (anstelle Adressen)  
+	\item Müssen zur Entwicklungszeit im Code definiert werden
+	\item Der Speicher einer Variable wird automatisch freigegeben, sobald die Variable nicht mehr gültig ist.
+	
+\end{itemize}
+
+\textbf{Dynamische Speicherverwaltung}
+\begin{itemize}
+	\item Speicher kann zur Laufzeit (dynamisch) vom System angefordert (alloziert) werden 
+	\subitem Operator: \texttt{new} (in C: Funktion \texttt{malloc()}).
+	\item Dynamisch allozierter Speicher muss wieder explizit freigegeben werden
+	\subitem Operator: \texttt{delete} (in C: Funktion \texttt{free()}).
+	\item Dynamischer Speicher wird nicht auf dem Stack angelegt, sondern auf dem \textbf{Heap}.
+	\item Auf Dynamisch allozierter Speicher kann \textbf{nur} über Pointer zugegriffen werden.
+\end{itemize}
+
+\begin{lstlisting}[mathescape]
+int* pInt = new int; // Speicher für int alloziert
+char* pCh1 = new char; // Speicher für char alloziert
+char* pCh2 = new char;
+char* pArr = new int[100]; // Array
+*pInt = 23;
+std::cin >> *pCh1;
+pCh2 = pCh1;
+// pCh2 zeigt nun auch auf die gleiche Speicherstelle wie pCh1. Damit geht aber der Zugriff auf die Speicherstelle verloren, auf die pCh2 gezeigt hat (memory leak!)
+delete pInt; // Speicher freigeben
+delete pCh1; // Speicher freigeben
+delete pCh2; // ergibt Fehler
+pInt[22] = -45; // Wert zuweisen
+delete pInt; // Fehler: nur pInt[0] wird freigegeben
+delete[] pInt; // korrekter Befehl
+\end{lstlisting}
+Beim Anwenden des \texttt{delete}-Operator auf einen bereits freigegebenen Speicherbereich, kann Probleme verursachen. Oft wird deshalb ein Pointer nach der \texttt{delete}-Operation auf 0 (bzw. \texttt{nullptr}) gesetzt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
