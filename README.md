@@ -14,10 +14,12 @@
 * Vectors & Strings
 * Klassen
 * Dynamische Datentypen & Pointers
-* Iterators
-* Container
+* Container Iterators
+* Container (bsp)
 * Memory Management
 * Subtyping
+* binarytrees
+* Single linked list & double linked lists
 * Polymorphismus und Vererbung
 
 ### Fortschritt der Zusammenfassung:
@@ -32,12 +34,13 @@
 - [x] Pointer & Referenzen (Robin)
 - [x] Vectors & Strings (Robin)
 - [x] Klassen (Robin)
-- [ ] Dynamische Datentypen & Pointers ()
-- [ ] Iterators ()
-- [ ] Container ()
-- [ ] Memory Management ()
-- [ ] Subtyping ()
-- [ ] Polymorphismus und Vererbung ()
+- [ ] Dynamische Datentypen & Pointers (Cedric)
+- [x] Container Iterators (Robin)
+- [ ] Container (bsp) (Cedric)
+- [ ] Memory Management (Cedric)
+- [x] Subtyping (Robin)
+- [ ] binarytrees (Cedric)
+- [x] Polymorphismus und Vererbung (Robin)
 
 
 
