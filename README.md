@@ -37,7 +37,7 @@
 - [x] Dynamische Datentypen & Pointers (Cedric)
 - [x] Container Iterators (Robin)
 - [?] Container (bsp) (Cedric)
-- [ ] Memory Management (Cedric)
+- [x] Memory Management (Cedric)
 - [x] Subtyping (Robin)
 - [ ] binarytrees (Cedric)
 - [x] Polymorphismus und Vererbung (Robin)
