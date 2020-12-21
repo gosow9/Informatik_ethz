@@ -1,0 +1,36 @@
+\section{Binarytrees}
+Eine Liste mit jeweils 2 Nachfolgern. Dem obersten Knoten sagt man Wurzel (\textbf{root}). 
+Alle Knoten (\textbf{node}) die am Ende des Baums hängen werden Blatt (\textbf{leaf}) genannt. 
+Höhe eines Baums = maximale Anzahl Knoten zwischen root und leaf.
+Folgendes Element links: kleiner als Knoten, rechts grösser.
+\begin{lstlisting}[mathescape]
+struct tNode {
+	int key;
+	tNode *left, *right;
+};
+\end{lstlisting}
+
+Füge neuen Knoten mit Key k ein. Rekursive Methode.
+\begin{lstlisting}[mathescape]
+void insert(tNode *p, int k){
+if(p==0{
+p = new tNode;
+p->key = k;
+p->left = NULL; p->right = NULL;}
+else if(p->key > k) insert(p->left,k);
+else insert(p->right, k);}
+// Aufruf:
+tNode *root = NULL; insert(root,2); 
+\end{lstlisting}
+Iterative Methode. Rückgabewert ist ein Pointer.
+\begin{lstlisting}[mathescape]
+tNode* search(tNode *root, int k){
+tNode *p = root;
+while(p){
+if(p->key == k) return p;
+if(p->key > k) p = p->left;
+else p = p->right;}}
+//Aufruf:
+tNode *x = search(root,2);
+\end{lstlisting}
+\todo{Binary Trees fertig machen und noch ein Beispiel dazu}
