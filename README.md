@@ -15,7 +15,6 @@
 * Klassen
 * Dynamische Datentypen & Pointers
 * Container Iterators
-* Container (bsp)
 * Memory Management
 * Subtyping
 * binarytrees
@@ -36,7 +35,6 @@
 - [x] Klassen (Robin)
 - [x] Dynamische Datentypen & Pointers (Cedric)
 - [x] Container Iterators (Robin)
-- [?] Container (bsp) (Cedric)
 - [x] Memory Management (Cedric)
 - [x] Subtyping (Robin)
 - [ ] binarytrees (Cedric)
