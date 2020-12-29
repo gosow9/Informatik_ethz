@@ -24,7 +24,7 @@
 ### Fortschritt der Zusammenfassung:
 - [x] Integer Arithmetik (Cedric)
 - [x] Type Casts (Cedric)
-- [ ] floating point (Cedric)
+- [x] floating point (Cedric)
 - [x] Kontrollstrukturen (Cedric)
 - [x] Arrays (Cedric)
 - [x] Structs (Cedric)
@@ -37,11 +37,16 @@
 - [x] Container Iterators (Robin)
 - [x] Memory Management (Cedric)
 - [x] Subtyping (Robin)
-- [ ] binarytrees (Cedric)
+- [x] binarytrees (Cedric)
 - [x] Polymorphismus und Vererbung (Robin)
 - [ ] Libraries
 - [ ] Examples
 
+### Ergänzungen in der Zusammfenfassung
+- [ ] Basiswechsel (Robin)
+- [ ] Floatingpoint (Cedric)
+- [ ] Precedence liste (Robin)
+- [ ] EBNF (Cedric)
 
 
 
