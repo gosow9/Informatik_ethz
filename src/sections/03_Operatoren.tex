@@ -17,8 +17,32 @@ Für weitere mathematische Funktionen
 fabs(), sqrt(), exp(), log(), cos(),
 acos()
 \end{lstlisting}
-
-
+\subsection{Präzedenz}
+\begin{multicols}{2}
+\begin{tabular}{p{0.015 \textwidth}|p{0.04 \textwidth}|p{0.02 \textwidth}}
+	Prä. & Operator & Assoz.\\ \hline 
+	17 & :: & $\rightarrow$\\
+	16 & a++ a-- & \\
+	& a[] & \\
+	& . -> & \\
+	15 & ++a --a & $\leftarrow$\\
+	 & +a -a & \\
+	 &! & \\
+	 & *a \&a & \\
+	 & new  & \\
+	 & delete & 
+\end{tabular}
+\begin{tabular}{p{0.015 \textwidth}|p{0.04 \textwidth}|p{0.02 \textwidth}}
+	Prä. & Operator & Assoz.\\ \hline 
+	 13& a*b a/b a\%b & $\rightarrow$\\	
+	 12 & a+b a-b &\\
+	 9 & < <= > >= & \\
+	 8 & == != &\\
+	 4 & \&\& & \\
+	 3 & || & \\
+	 2 & += -= *= /= &$\leftarrow$
+\end{tabular}
+\end{multicols}
 
 
 

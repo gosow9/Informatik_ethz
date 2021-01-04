@@ -1,6 +1,23 @@
-\section{Umrechnung Binär-Dezimal}
-
-
+\section{Basiswechsel}
+\begin{center}
+	$a_{b_1} \underrightarrow{\text{\qquad I\qquad}} a_{10} \underrightarrow{\text{\qquad II\qquad}} a_{b_2}$
+\end{center}
+Beispiel: ($b_1 = 2$, $b_2 = 5$, $a_{b_1} = a_2 = 0b11001$)
+\begin{itemize}
+	\item[I] Die Dezimalzahl ergibt sich aus
+	\item[] $a_{10} = 1\cdot2^4 + 1\cdot2^3 + 0\cdot2^2 + 0\cdot2^1 + 1\cdot2^0 = 27$ 
+	\item[II] Die Quinärzahl ergibt sich aus folgendem Algorithmus
+	\begin{center}
+		\begin{tabular}{lll}
+		Koeff. 1 & Koeff. 2 & Koeff. 3\\
+		$27 \% 5 = \textbf{2}$ & $5\%5 = \textbf{0}$ & $1\%5 = \textbf{1}$ \\
+		$27 - 2 = 25$ & $5 - 0 = 5$ & $1 -1 = 0 $\\
+		$25/5 = 5$ & $5/5 = 1$ & $0/5 = 0$ \\
+	\end{tabular}
+	\end{center}
+$\Rightarrow a_{b_2} = a_5 = 1 0 2$
+\end{itemize}
+Gleicher Algorithmus für (II) anderes Beispiel:
 \begin{center}
 	\begin{tabular}{ lll } 
 	13	&	1	& Dezimalzahl durch 2 teilen und rest\\
@@ -8,10 +25,9 @@
 	3	&	1	& lesen.\\
 	1	&	1	&6 bsp: 13 = 1101\\
 	0 & & \\
-		
 	\end{tabular}
+Bemerkung: $0b$ steht für Binär, $0x$ für Hexadezimal.
 \end{center}
-1001 = $1\cdot2^3 + 0 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 = 8+0+0+1=9$
 
 
 
