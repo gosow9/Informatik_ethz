@@ -98,6 +98,22 @@ int,float(4byte) & double (8byte)\\
 \end{center}
 
 \todo{Schönners Beispiel und bessere Formatierung}\subsection{Fliesskommazahlen}
+Fliesskommazahlen sind durch 4 Zhalen definiert:
+\begin{itemize}
+	\item Die Basis $\beta \geqslant 2$
+	\item Die Präzision $p \geqslant 1$
+	\item Der kleinste Exponent $e_{min}$
+	\item Der grösste Exponent	
+\end{itemize}
+Fliesskommazahlen Tabu!
+\begin{itemize}
+	\item Test keine gerundeten Fliesskommazahlen auf Gleichheit! z.b in for-loop
+	\item Addiere keine zwei Zahlen  sehr unterschiedlicher Grösse! 
+	\item Subtrahiere keine zwei Zahlen sehr ähndlicher Grösse! Auslöschung!
+
+\end{itemize}
+$F$ enthält $\displaystyle \pm\sum_{i=0}^{p-1}d_i \beta^{-i}\cdot \beta^{e} =  \pm d_{0\text{\textbullet}} d_1\dots d_{p-1} \times \beta^e$
+In der normalisierten Darstellung $F^{\ast}$ gilt $d_0 \neq 0$, $F^{\ast}(\beta,p,e_{min},e_{max})$ 
 \begin{center}
 	\begin{tabular}{ ll } 
 		float&1b$\rightarrow$sign, 8b$\rightarrow$exp, 23b$\rightarrow$mantisse\\
