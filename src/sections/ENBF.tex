@@ -1,0 +1,29 @@
+\section{EBNF}
+Erweiterte Backus-Naur-Form 
+\begin{center}
+	\begin{tabular}{|l|c|}
+		\hline
+\textbf{Verwendung} & \textbf{Zeichen} \\
+\hline
+Definition & =\\\hline
+Aufzählung & ,\\\hline
+Endezeichen & ;\\\hline
+Alternative & |\\\hline
+Option & [...]\\\hline
+Optionale Wiederholung & $\left\lbrace ...\right\rbrace $ \\\hline
+Gruppierung & (...)\\\hline
+Anführungszeichen 1. Variante & "..."\\\hline
+Anführungszeichen 2. Variante & '...'\\\hline
+Komentar & (*...*)\\\hline
+Spezielle Sequenz & ?...?\\\hline
+Ausnahme & -\\
+\hline
+	\end{tabular}
+\end{center}
+Beispiel für einen Rechner.
+Eine Zahl ist eine Folge von Ziffern. Eine Folge von Ziffern ist eine Ziffer oder eine Ziffer gefolgt von Ziffern.
+\begin{lstlisting}[mathescape]
+number = digits
+digit = '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'
+digits = digit | digit digits.
+\end{lstlisting}
