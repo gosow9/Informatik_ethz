@@ -1,15 +1,41 @@
 \section{Operatoren}
-
+\textbf{b$=$5; c$=$b++;$\rightarrow$c$=$5,b$=$6 verwende $++$b für c$=$6,b$=$6}
+\qquad exponenten: \texttt{1.1e-5 =} $1.1\cdot10^{-5}$
 \begin{center}
-	\begin{tabular}{ ll } 
-		$+$ $-$ $\ast$ $/$ $\hat{}$ & mathematische Operatoren\\
-		 \% & Modulo\\
-		x $+=$ i; & x $=$ x $+$ i; ebenso $*=$, $/=$, $-=$\\
-		1.1E$^{-5}$ & = $1.1\cdot10^{-5}$\\
-		i$++$, i$--$ & erhöt / verkleinert i um 1
-	\end{tabular}
+	\begin{tabular*}{\columnwidth}{ |c @{\extracolsep{\fill}}|c|c|c| } 
+		\hline
+			Assignment		&	Inc/dec		&	arittmetic		&			logic		\\
+		\hline\hline
+							& 				&\texttt{+a}		&  						\\
+		\texttt{a = b} 		& 				&\texttt{-a}		&						\\
+		\texttt{a += b} 	& 				&\texttt{a + b}		&						\\
+		\texttt{a -= b} 	& 				&\texttt{a - b}		&						\\
+		\texttt{a *= b} 	& 				&\texttt{a * b}		&						\\
+		\texttt{a /= b} 	&\texttt{++a}	&\texttt{a / b}		&\texttt{!a}			\\
+		\texttt{a \%= b}	&\texttt{--a}	&\texttt{a \% b}	&\texttt{a \&\& b}		\\
+		\texttt{a \&= b}	&\texttt{a++}	&\texttt{$\sim$a} 	&\texttt{a || b}		\\
+		\texttt{a |= b}		&\texttt{a--}	&\texttt{a \& b}	&						\\
+		\texttt{a \^ = b}	& 				&\texttt{a | b}		&						\\
+		\texttt{a <<= b} 	& 				&\texttt{a \^{} b}	&						\\
+		\texttt{a >>= b} 	& 				&\texttt{a << b}	&						\\
+						 	&  				&\texttt{a >> b}	&						\\
+	\hline
+	\end{tabular*}
+
+	\begin{tabularx}{\columnwidth}{|X|X|X|}
+		\hline
+		Comparison			&	access				&	other		\\
+		\hline\hline
+		\texttt{a == b} 	&\texttt{a[b]} 			&				\\
+		\texttt{a != b} 	&\texttt{*a} 			&				\\
+		\texttt{a < b} 		&\texttt{\&a} 			&\texttt{a(...)}\\
+		\texttt{a > b} 		&\texttt{a -> b} 		&\texttt{a, b}	\\
+		\texttt{a >= b} 	&\texttt{a.b} 			&\texttt{? :}	\\
+		\texttt{a <= b} 	&\texttt{a->*b} 		&				\\
+		\texttt{a <=> b} 	&\texttt{a.*b} 			&				\\
+		\hline
+	\end{tabularx}
 \end{center}
-b$=$5; c$=$b++;$\rightarrow$c$=$5,b$=$6 verwende $++$b für c$=$6,b$=$6
 
 Für weitere mathematische Funktionen
 \begin{lstlisting}
@@ -18,6 +44,7 @@ fabs(), sqrt(), exp(), log(), cos(),
 acos()
 \end{lstlisting}
 \subsection{Präzedenz}
+
 \begin{multicols}{2}
 \begin{tabular}{p{0.015 \textwidth}|p{0.04 \textwidth}|p{0.02 \textwidth}}
 	Prä. & Operator & Assoz.\\ \hline 
