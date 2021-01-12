@@ -5,16 +5,19 @@ Structs werden vor der main() Funktion definiert.
 struct point {
 int x, y;
 double gamma;
-}p,q; 	// p,q schon definiert
+}p,q;   // p,q schon definiert
 
-point k; 	// Neuer "point" definieren
-k.x = 2;	// Variable in struct definieren
-k = {1,2,0.75} // schnell initialisieren
-q = {1} $\leftrightarrow$ q ={1,0,0} // rest wird mit 0 aufgefüllt
+point k;   // Neuer "point" definieren
+k.x = 2;  // Variable in struct definieren
+point* ptr = &p;
+k = {1,2,0.75}; // schnell initialisieren
+p={};// Alle Elemente auf 0 initialisiert
+q ={1,2,3}; // rest wird mit 0 aufgefüllt
 p = q; // ist gleich wie
 p.x = q.x; 
 p.y = q.y;
 p.gamma = q.gamma;
+cout << ptr->gamma<<p.y<<q.x; //Output: 321
 \end{lstlisting}
 
 \textbf{Falsch Rekursion:} 

@@ -1,0 +1,58 @@
+\section{Library}
+\subsection{Vector}
+\rowcolors{2}{gray!20}{white}
+\begin{center}
+	\renewcommand\tabularxcolumn[1]{m{#1}}
+	\begin{tabularx}{\columnwidth}{ | l  X | } 
+		\hline
+		v.at(pos)&access specified element with bounds checking\\
+		
+		v[pos] &access specified element\\
+		
+		v.front() &Reference to the first element\\
+		
+		v.back() & Reference to the last element\\
+		
+		v.data() & direct access to the underlying array\\
+		
+		v.begin()& returns an iterator to the beginning\\
+		
+		v.end() & returns an iterator to the end\\
+		
+		v.rbegin()& returns a reverse iterator to the beginning\\
+		
+		v.rend()& returns a reverse iterator to the end\\
+		
+		v.empty()& checks whether the container is empty\\
+		
+		v.size() & returns the number of elements\\
+		
+		v.max\_size()& returns the maximum possible number of elements\\
+		
+		v.reserve(new\_cap)& new storage is allocated\\
+		
+		v.capacity()& returns the number of elements that can be held in currently allocated storage\\
+		
+		v.shrink\_to\_fit() & reduces memory usage by freeing unused memory\\
+		
+		v.clear()& clears the contents\\
+		
+		v.insert(pos, val) &\\
+		
+		v.emplace(pos, args) & constructs element in-place\\ 
+		
+		v.erase(pos) & erases elements. v.erase(v.begin()) first element\\
+	
+		v.push\_back(arg) & adds an element to the end\\
+	
+		v.emplace\_back() & 	constructs an element in-place at the end\\
+		
+		v.pop\_back() & removes the last element\\
+		
+		v.resize(arg) & changes the number of elements stored, removes from back if smaller\\
+				
+		v1.swap(v2) & swaps the contents \\
+		std::swap(v1, v2) & swaps the contents \\
+		\hline
+	\end{tabularx}
+\end{center}

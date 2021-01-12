@@ -4,7 +4,7 @@ Wertebereich des Integers ist mit $n$-bits für \texttt{signed} $-2^{n-1}$ to $2
 	\begin{tabular}{ | m{2.4cm} | m{0.6cm}| m{2.6cm} | } 
 		\hline
 		Type & Bytes & Range\\
-		\hline
+		\hline\hline
 		\texttt{char} & 1 & $-128$ to $127$ \\ 
 		\texttt{unsigned char} & 1 & $0$ to $255$ \\ 
 		\texttt{WCHAR\_T} & 4 & 1 Wide Char \\ 
@@ -98,6 +98,38 @@ int,float(4byte) & double (8byte)\\
 \end{center}
 
 \todo{Schönners Beispiel und bessere Formatierung}\subsection{Fliesskommazahlen}
+Fliesskommazahlen sind durch 4 Zhalen definiert:
+\begin{itemize}
+	\item Die Basis $\beta \geqslant 2$
+	\item Die Präzision $p \geqslant 1$
+	\item Der kleinste Exponent $e_{min}$
+	\item Der grösste Exponent	
+\end{itemize}
+Fliesskommazahlen Tabu!
+\begin{itemize}
+	\item Test keine gerundeten Fliesskommazahlen auf Gleichheit! z.b in for-loop
+	\item Addiere keine zwei Zahlen  sehr unterschiedlicher Grösse! 
+	\item Subtrahiere keine zwei Zahlen sehr ähndlicher Grösse! Auslöschung!
+
+\end{itemize}
+$F$ enthält $\displaystyle \pm\sum_{i=0}^{p-1}d_i \beta^{-i}\cdot \beta^{e} =  \pm d_{0\text{\textbullet}} d_1\dots d_{p-1} \times \beta^e$
+In der normalisierten Darstellung $F^{\ast}$ gilt $d_0 \neq 0$, $F^{\ast}(\beta,p,e_{min},e_{max})$ 
+
+\textbf{Bsp:$F^{\ast}({\color{brown}{2}},{\color{orange}{1}}+{\color{red}{3}},{\color{blue}{-2}},{\color{cyan}{2}})$} Vorzeichen ist in Precision
+\begin{center}
+	\begin{tabular} { m{0.8cm} | m{0.8cm} m{0.95cm} m{0.7cm} m{0.7cm}m{0.6cm} }
+	 $d_{0\text{\textbullet}} d_1 d_2$ & ${\color{blue}{e=-2}}$&$e=-1$&$e=0$&$e=1$&${\color{cyan}{e=2}}$\\
+	 \hline
+	 ${\color{orange}{+}}{\color{red}{1.00}}{\color{brown}{_2}}$ & 0.25   & 0.5   & 1    & 2   & 4\\
+	 ${\color{orange}{+}}{\color{red}{1.01}}{\color{brown}{_2}}$ & 0.3125 & 0.625 & 1.25 & 2.5 & 5\\
+	 ${\color{orange}{+}}{\color{red}{1.10}}{\color{brown}{_2}}$ & 0.375  & 0.75  & 1.5  & 3   & 6\\
+	 ${\color{orange}{+}}{\color{red}{1.11}}{\color{brown}{_2}}$ & 0.4375 & 0.875 & 1.75 & 3.5 & 7\\
+	 \hline
+	\end{tabular}
+\end{center}
+Anz. Zahlen: $\beta^{p}\cdot (e_{max}-e_{min}+1) $
+
+Anz. Positive Zahlen: $\beta^{p-1}\cdot (e_{max}-e_{min}+1) $
 \begin{center}
 	\begin{tabular}{ ll } 
 		float&1b$\rightarrow$sign, 8b$\rightarrow$exp, 23b$\rightarrow$mantisse\\
