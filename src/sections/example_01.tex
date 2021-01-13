@@ -1,5 +1,12 @@
 \section{Examples}
+\subsection{Types}
+\begin{lstlisting}
+float f = 0.01;
+double d = 0.01;
+(f - d == 0.0) // Bool false
+------------------------------
 
+\end{lstlisting}
 \subsection{Single Linked List}
 \begin{lstlisting}[mathescape]
 using namespace std;
@@ -41,26 +48,28 @@ public:
 		}
 		return sum;
 	}
+	
 	void List::deleteValue(unsigned int value) {
-		if (first == sentinel){
-			return;
-		}
-		if (first->value == value){
-			ListNode* node = first;
-			first = first->next;
-			delete node;
-		} else {
-			ListNode* prev = first;
-			while (prev->next->value != value && prev->next != sentinel){
-				prev = prev->next;
-				}
-		if (prev->next != sentinel){
-			ListNode* node = prev->next;
-			prev->next = node->next;
-			delete node;
-			}
-		}
+	  if(first != sentinel)
+	    {
+		  auto it_old = first;
+		  if(first->value == value){
+			 first = first->next;
+			 delete it_old;
+		   }
+	  else{
+  		for(auto it = first->next; it != sentinel; it = it->next )
+		  { 
+			if(it->next->value == value && it->next != sentinel){
+			  it_old = it->next;
+			  it->next = it_old->next;
+			  delete it_old;
+			  break;
+			 }
+		  }
+	   }
 	}
+}
 	
 	
 };
@@ -76,156 +85,204 @@ int main()
 
 
 \section{Double Linked List}
+
+
+\subsection{EBNF}
+Diese EBNF definition
 \begin{lstlisting}
-using namespace std;
+Hamburger = Bun { Onions } Patties Bun.
+Patties = "P" { "P" }.
+Onions = "O" "O" "O" { Onions }
+Bun = "B"
+\end{lstlisting}
+Hat folgenden Code als umsetztung mit diesen EBNF inputs als korrekt: "BPB", "BOOOPPB", "BOOOOOOPPPPB"
+\begin{lstlisting}
+bool Bun(std::istream& is) {
+	return consume(is, 'B'); 
+	}
 
-// A linked list node 
-class Node{ 
-public:
-	int data; 
-	Node* next; 
-	Node* prev; 
-}; 
+// Consumes next Patties = "P" { "P" }.
+bool Patties(std::istream& is) {
+	if (consume(is, 'P')) {
+		while (lookahead(is) == 'P' && consume(is, 'P'));
+		return true;
+		}
+	return false;
+}
 
-/* Given a reference (pointer to pointer) to the head of a list 
-and an int, inserts a new node on the front of the list. */
-void push(Node** head_ref, int new_data) 
-{ 
-/* 1. allocate node */
-Node* new_node = new Node(); 
+// Consumes next Onions = "O" "O" "O" { Onions }.
+bool Onions(std::istream& is) {
+	if (consume(is, 'O')) {
+		unsigned int count = 1;
+		while (lookahead(is) == 'O' && consume(is, 'O'))
+			{++count;}
+		return count % 3 == 0; // Zeigt "O" "O" "O" true
+		}
+	return false;
+}
 
-/* 2. put in the data */
-new_node->data = new_data; 
+// Consumes next Hamburger = Bun { Onions } Patties Bun.
+bool Hamburger(std::istream& is) {
+	if (Bun(is)) {
+		if (lookahead(is) == 'O' && !Onions(is))
+			{return false;}
+		if (!(Patties(is) && Bun(is)))
+			{return false;}
+		return !lookahead(is);
+	}
+	return false;
+}
 
-/* 3. Make next of new node as head and previous as NULL */
-new_node->next = (*head_ref); 
-new_node->prev = NULL; 
+\end{lstlisting}
 
-/* 4. change prev of head node to new node */
-if ((*head_ref) != NULL) 
-(*head_ref)->prev = new_node; 
 
-/* 5. move the head to point to the new node */
-(*head_ref) = new_node; 
-} 
+\subsection{Operator überschreiben}
+Header file mit Klasse
+\begin{lstlisting}
+class Vec3 {
+	public:
+	// Create an all-0 vector
+	Vec3() 
+	: m_x(0.0f), m_y(0.0f), m_z(0.0f) {}
+	
+	// Create a vector with x, y, z components
+	Vec3(float x, float y, float z) 
+	: m_x(x), m_y(y), m_z(z) {}
+	
+	// Access the vector components  
+	float x() const { return m_x; }
+	float y() const { return m_y; }
+	float z() const { return m_z; }
+	
+	// Set the vector components
+	void setX(float x) { m_x = x; }
+	void setY(float y) { m_y = y; }
+	void setZ(float z) { m_z = z; }
+	
+	// Compute the norm of a vector
+	float norm() const;
+	
+	// Return a normalized copy of a vector
+	Vec3 normalized() const;
+	
+	// Compute the dot product between the vector and other
+	float operator*(const Vec3& other) const;
+	
+	// Arithmetic operations with vectors
+	Vec3& operator+=(const Vec3& other);
+	Vec3 operator+(const Vec3& other) const;
+	Vec3& operator-=(const Vec3& other);
+	Vec3 operator-(const Vec3& other) const;
+	
+	// Arithmetic operations with scalars
+	Vec3& operator/=(float scalar);
+	Vec3 operator/(float scalar) const;
+	Vec3& operator*=(float scalar);
+	Vec3 operator*(float scalar) const;
+	
+	// Stream operator to display the vector's components
+	// "friend" makes sure we can implement it in the class
+	friend std::ostream& operator<<(std::ostream& out, const Vec3& v);
+	
+	// Stream operator to read the vector's components
+	// "friend" makes sure we can implement it in the class
+	friend std::istream& operator>>(std::istream& in, Vec3& v);
+	
+	private:
+	float m_x;
+	float m_y;
+	float m_z;
+};
+\end{lstlisting}
+.cpp File
+\begin{lstlisting}
+float Vec3::norm() const {
+	return std::sqrt((*this) * (*this));
+}
 
-/* Given a node as prev_node, insert a new node after the given node */
-void insertAfter(Node* prev_node, int new_data) 
-{ 
-/*1. check if the given prev_node is NULL */
-if (prev_node == NULL) 
-{ 
-cout<<"the given previous node cannot be NULL"; 
-return; 
-} 
+Vec3 Vec3::normalized() const {
+	return (*this) / norm();
+}
 
-/* 2. allocate new node */
-Node* new_node = new Node();
+float Vec3::operator*(const Vec3& other) const {
+	return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
+}
 
-/* 3. put in the data */
-new_node->data = new_data; 
+Vec3& Vec3::operator/=(float scalar) {
+	m_x /= scalar;
+	m_y /= scalar;
+	m_z /= scalar;
+	return *this;
+}
 
-/* 4. Make next of new node as next of prev_node */
-new_node->next = prev_node->next; 
+Vec3 Vec3::operator/(float scalar) const {
+	Vec3 other(m_x, m_y, m_z);
+	other /= scalar;
+	return other;
+}
 
-/* 5. Make the next of prev_node as new_node */
-prev_node->next = new_node; 
+Vec3& Vec3::operator*=(float scalar) {
+	m_x *= scalar;
+	m_y *= scalar;
+	m_z *= scalar;
+	return *this;
+}
 
-/* 6. Make prev_node as previous of new_node */
-new_node->prev = prev_node; 
+Vec3 Vec3::operator*(float scalar) const {
+	Vec3 other(m_x, m_y, m_z);
+	other *= scalar;
+	return other;
+}
 
-/* 7. Change previous of new_node's next node */
-if (new_node->next != NULL) 
-new_node->next->prev = new_node; 
-} 
+std::ostream& operator<<(std::ostream& out, const Vec3& v) {
+	return out << "[" << v.x() << ", " << v.y() << ", " << v.z() << "]";
+}
 
-/* Given a reference (pointer to pointer) to the head 
-of a DLL and an int, appends a new node at the end */
-void append(Node** head_ref, int new_data) 
-{ 
-/* 1. allocate node */
-Node* new_node = new Node(); 
+std::istream& operator>>(std::istream& in, Vec3& v) {
+	float x, y, z;
+	char split;
+	in >> std::ws;
+	in >> x;
+	in >> std::ws;
+	in >> split;
+	in >> std::ws;
+	assert(split == ',');
+	in >> y;
+	in >> std::ws;
+	in >> split;
+	in >> std::ws;
+	assert(split == ',');
+	in >> z;
+	v.setX(x);
+	v.setY(y);
+	v.setZ(z);
+	return in;
+}
 
-Node* last = *head_ref; /* used in step 5*/
 
-/* 2. put in the data */
-new_node->data = new_data; 
+Vec3& Vec3::operator+=(const Vec3& other) {
+	m_x += other.m_x;
+	m_y += other.m_y;
+	m_z += other.m_z;
+	return *this;
+}
 
-/* 3. This new node is going to be the last node, so 
-make next of it as NULL*/
-new_node->next = NULL; 
+Vec3 Vec3::operator+(const Vec3& other) const {
+	Vec3 sum(m_x, m_y, m_z);
+	sum += other;
+	return sum;
+}
 
-/* 4. If the Linked List is empty, then make the new 
-node as head */
-if (*head_ref == NULL)
-{ 
-new_node->prev = NULL; 
-*head_ref = new_node; 
-return; 
-} 
+Vec3& Vec3::operator-=(const Vec3& other) {
+	m_x -= other.m_x;
+	m_y -= other.m_y;
+	m_z -= other.m_z;
+	return *this;
+}
 
-/* 5. Else traverse till the last node */
-while (last->next != NULL) 
-last = last->next; 
-
-/* 6. Change the next of last node */
-last->next = new_node; 
-
-/* 7. Make last node as previous of new node */
-new_node->prev = last; 
-
-return; 
-} 
-
-// This function prints contents of 
-// linked list starting from the given node 
-void printList(Node* node) 
-{ 
-Node* last; 
-cout<<"\nTraversal in forward direction \n"; 
-while (node != NULL) 
-{ 
-cout<<" "<<node->data<<" "; 
-last = node; 
-node = node->next; 
-} 
-
-cout<<"\nTraversal in reverse direction \n"; 
-while (last != NULL) 
-{ 
-cout<<" "<<last->data<<" "; 
-last = last->prev; 
-} 
-} 
-
-/* Driver program to test above functions*/
-int main() 
-{ 
-/* Start with the empty list */
-Node* head = NULL; 
-
-// Insert 6. So linked list becomes 6->NULL 
-append(&head, 6); 
-
-// Insert 7 at the beginning. So 
-// linked list becomes 7->6->NULL 
-push(&head, 7); 
-
-// Insert 1 at the beginning. So 
-// linked list becomes 1->7->6->NULL 
-push(&head, 1); 
-
-// Insert 4 at the end. So linked 
-// list becomes 1->7->6->4->NULL 
-append(&head, 4); 
-
-// Insert 8, after 7. So linked 
-// list becomes 1->7->8->6->4->NULL 
-insertAfter(head->next, 8); 
-
-cout << "Created DLL is: "; 
-printList(head); 
-
-return 0; 
-} 
+Vec3 Vec3::operator-(const Vec3& other) const {
+	Vec3 difference(m_x, m_y, m_z);
+	difference -= other;
+	return difference;
+}
 \end{lstlisting}
