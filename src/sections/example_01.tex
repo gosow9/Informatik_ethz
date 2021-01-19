@@ -1,16 +1,7 @@
 \section{Examples}
-\subsection{Types}
-\begin{lstlisting}
-float f = 0.01;
-double d = 0.01;
-(f - d == 0.0) // Bool false
-------------------------------
-
-\end{lstlisting}
 \subsection{Single Linked List}
 \begin{lstlisting}[mathescape]
 using namespace std;
-
 struct node
 {
 	int data;
@@ -64,19 +55,15 @@ public:
 			  it_old = it->next;
 			  it->next = it_old->next;
 			  delete it_old;
-			  break;
-			 }
+			  break;}
 		  }
 	   }
 	}
-}
-	
-	
+}	
 };
 
 int main()
-{
-	linked_list a;
+{	linked_list a;
 	a.add_node(1);
 	a.add_node(2);
 	return 0;
@@ -85,8 +72,30 @@ int main()
 
 
 \section{Double Linked List}
+\begin{lstlisting}
+struct Node {
+	int data;
+	struct Node* next; // Ptr to next node
+	struct Node* prev; // Ptr to prev node
+};
+\end{lstlisting}
+\begin{center}
+\includegraphics[width=0.24 \textwidth]{images/addFront}
+\includegraphics[width=0.24 \textwidth]{images/add_middle}
+\end{center}
 
-
+\begin{lstlisting}
+void insertAfter(struct Node* prev_node, int new_data){
+	if (prev_node == NULL) {return;}
+	struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+	new_node->data = new_data;
+	new_node->next = prev_node->next;
+	prev_node->next = new_node;
+	new_node->prev = prev_node;
+	if (new_node->next != NULL)
+		new_node->next->prev = new_node;
+}
+\end{lstlisting}
 \subsection{EBNF}
 Diese EBNF definition
 \begin{lstlisting}
@@ -109,7 +118,6 @@ bool Patties(std::istream& is) {
 		}
 	return false;
 }
-
 // Consumes next Onions = "O" "O" "O" { Onions }.
 bool Onions(std::istream& is) {
 	if (consume(is, 'O')) {
@@ -120,7 +128,6 @@ bool Onions(std::istream& is) {
 		}
 	return false;
 }
-
 // Consumes next Hamburger = Bun { Onions } Patties Bun.
 bool Hamburger(std::istream& is) {
 	if (Bun(is)) {
@@ -132,7 +139,6 @@ bool Hamburger(std::istream& is) {
 	}
 	return false;
 }
-
 \end{lstlisting}
 
 
@@ -141,11 +147,9 @@ Header file mit Klasse
 \begin{lstlisting}
 class Vec3 {
 	public:
-	// Create an all-0 vector
 	Vec3() 
 	: m_x(0.0f), m_y(0.0f), m_z(0.0f) {}
 	
-	// Create a vector with x, y, z components
 	Vec3(float x, float y, float z) 
 	: m_x(x), m_y(y), m_z(z) {}
 	
@@ -159,9 +163,8 @@ class Vec3 {
 	void setY(float y) { m_y = y; }
 	void setZ(float z) { m_z = z; }
 	
-	// Compute the norm of a vector
+	// Compute the norm of vec
 	float norm() const;
-	
 	// Return a normalized copy of a vector
 	Vec3 normalized() const;
 	
@@ -215,8 +218,7 @@ Vec3& Vec3::operator/=(float scalar) {
 	return *this;
 }
 
-Vec3 Vec3::operator/(float scalar) const {
-	Vec3 other(m_x, m_y, m_z);
+Vec3 Vec3::operator/(float scalar) const {	Vec3 other(m_x, m_y, m_z);
 	other /= scalar;
 	return other;
 }
@@ -227,13 +229,11 @@ Vec3& Vec3::operator*=(float scalar) {
 	m_z *= scalar;
 	return *this;
 }
-
 Vec3 Vec3::operator*(float scalar) const {
 	Vec3 other(m_x, m_y, m_z);
 	other *= scalar;
 	return other;
 }
-
 std::ostream& operator<<(std::ostream& out, const Vec3& v) {
 	return out << "[" << v.x() << ", " << v.y() << ", " << v.z() << "]";
 }
@@ -258,7 +258,6 @@ std::istream& operator>>(std::istream& in, Vec3& v) {
 	v.setZ(z);
 	return in;
 }
-
 
 Vec3& Vec3::operator+=(const Vec3& other) {
 	m_x += other.m_x;

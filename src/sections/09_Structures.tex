@@ -26,8 +26,7 @@ struct point {int x; point y;}; // Keine Rekursion
 \end{lstlisting}
 \textbf{Richtig Selbstreferenzierung:} 
 \begin{lstlisting}[mathescape]
-struct node
-{
+struct node{
 int data;
 struct node *next; // <-self reference
 };
