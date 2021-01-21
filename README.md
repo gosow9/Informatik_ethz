@@ -39,14 +39,14 @@
 - [x] Subtyping (Robin)
 - [x] binarytrees (Cedric)
 - [x] Polymorphismus und Vererbung (Robin)
-- [ ] Libraries
-- [ ] Examples
+- [x] Libraries
+- [x] Examples
 
 ### Ergänzungen in der Zusammfenfassung
-- [ ] Basiswechsel (Robin)
-- [ ] Floatingpoint (Cedric)
-- [ ] Precedence liste (Robin)
-- [ ] EBNF (Cedric)
+- [x] Basiswechsel (Robin)
+- [x] Floatingpoint (Cedric)
+- [x] Precedence liste (Robin)
+- [x] EBNF (Cedric)
 
 
 
